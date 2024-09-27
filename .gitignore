@@ -1,0 +1,13 @@
+venv/
+.vscode
+*.docx
+application/resources/bin/
+.env
+__pycache__/
+.env.dev
+
+app/backups/rabbitmq/rabbit@rabbitmq
+app/backups/postgresql/*
+!app/backups/postgresql/.gitkeep
+.DS_Store
+backups/

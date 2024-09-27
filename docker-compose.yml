@@ -1,0 +1,23 @@
+version: '3.5'
+
+
+services:
+    password_manager_database:
+        image: 'postgres:14.5'
+        container_name: 'password_manager_database'
+        restart: always
+        ports:
+            - 5432:5432
+        env_file:
+            - ./.env.dev
+
+    password_manager_api:
+        container_name: password_manager_api
+        build: .
+        depends_on:
+            - password_manager_database
+        env_file:
+            - ./.env.dev
+        ports:
+            - 8081:8080
+        command: python manage.py runserver 0.0.0.0:8080
